@@ -8,6 +8,9 @@ TagManager:
   - enemy
   - dirt
   - ladder
+  - equippable
+  - currency
+  - boss
   layers:
   - Default
   - TransparentFX
@@ -20,12 +23,12 @@ TagManager:
   - spawn
   - player
   - ladder
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - qitem
+  - safety
+  - dark
+  - lite
+  - dead
+  - swarm
   - 
   - 
   - 
@@ -44,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: sort
+    uniqueID: 3261407585
     locked: 0

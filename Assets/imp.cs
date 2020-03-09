@@ -45,7 +45,7 @@ public class imp : MonoBehaviour
         if (collision.transform.position.y > dz.y - 1 && jump == true)
         {
             jump = false;
-            rigd.AddForce(transform.up * accel * 25);
+            rigd.AddForce(Vector2.up * accel * 25);
             if (left == true)
             {
                 if (Random.Range(0, 10) == 0)

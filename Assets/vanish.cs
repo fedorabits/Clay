@@ -16,7 +16,7 @@ public class vanish : MonoBehaviour
     {
         time -= 1*Time.fixedDeltaTime;
         if(time <= 0)
-        {
+        {  
             Destroy(gameObject);
         }
     }

@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2226347418230826606}
   - component: {fileID: 3524313801653912834}
   - component: {fileID: 5933500056346142766}
-  m_Layer: 0
+  - component: {fileID: 255811843196850026}
+  m_Layer: 15
   m_Name: golemdead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,3 +129,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!255 &255811843196850026
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665957605239910114}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: 50
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0.004522198, y: -0.9499892}
+  m_DampingRatio: 0
+  m_Frequency: 0

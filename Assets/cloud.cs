@@ -15,6 +15,6 @@ public class cloud : MonoBehaviour
     void Update()
     {
         go += 1 * Time.fixedDeltaTime;
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-5,5),0));
+        GetComponent<Rigidbody2D>().AddForce(Vector2.left *(Random.Range(0f,2f)-1));
     }
 }
