@@ -7,6 +7,8 @@ public class die : MonoBehaviour
     public float hp;
     public GameObject death;
     public bool capsule;
+    public bool colorAs;
+    public bool drop;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class die : MonoBehaviour
             var collide = Physics2D.OverlapBox(transform.position, dc.size, 0, LayerMask.GetMask("player"));
             if (collide != null)
             {
-                if (collide.gameObject.GetComponent<move>().attack == true)
+                if (collide.gameObject.GetComponent<move>().attack == true && collide.isTrigger == true)
                 {
                     hp -= 2 * Time.fixedDeltaTime;
                 }
@@ -43,7 +45,15 @@ public class die : MonoBehaviour
         if(hp <= 0)
         {
             Destroy(gameObject);
-            Instantiate(death, transform.position, Quaternion.identity);
+            var ded = Instantiate(death, transform.position, Quaternion.identity,transform.parent);
+            if(drop == true)
+            {
+                ded.transform.parent = null;
+            }
+            if(colorAs == true)
+            {
+                ded.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+            }
         }
     }
 }

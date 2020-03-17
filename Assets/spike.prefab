@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 2067988479031100541}
   - component: {fileID: 2067988479031100540}
   - component: {fileID: 114215591151424072}
+  - component: {fileID: 114088121741754964}
   m_Layer: 0
   m_Name: spike
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,3 +176,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 5
+--- !u!114 &114088121741754964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067988479031100539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c3100ec6c95a40409e9861393186bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  harm: 0.5

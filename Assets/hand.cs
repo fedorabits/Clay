@@ -33,13 +33,16 @@ public class hand : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (left == false)
+        if (collision.rigidbody != null)
         {
-            collision.rigidbody.AddForce(-transform.right*500);
-        }
-        else
-        {
-            collision.rigidbody.AddForce(transform.right * 500);
+            if (left == false)
+            {
+                collision.rigidbody.AddForce(-transform.right * 500);
+            }
+            else
+            {
+                collision.rigidbody.AddForce(transform.right * 500);
+            }
         }
     }
 }

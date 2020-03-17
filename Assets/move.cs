@@ -48,7 +48,7 @@ public class move : MonoBehaviour
             rend.flipX = true;
             GetComponent<Animator>().enabled = true;
             push.offset = new Vector2(-0.7293483f,0);
-            GetComponent<AreaEffector2D>().forceMagnitude = -50;
+            GetComponent<AreaEffector2D>().forceMagnitude = -2.5f;
         }
         else if (Input.GetKey(KeyCode.RightArrow) == true && ducking == false && rigd.velocity.y > -3)
         {
@@ -56,7 +56,7 @@ public class move : MonoBehaviour
             rend.flipX = false;
             GetComponent<Animator>().enabled = true;
             push.offset = new Vector2(0.7293483f, 0);
-            GetComponent<AreaEffector2D>().forceMagnitude = 50;
+            GetComponent<AreaEffector2D>().forceMagnitude = 2.5f;
         }
         else if (attack == false)
         {
@@ -80,6 +80,11 @@ public class move : MonoBehaviour
             attack = true;
             push.enabled = true;
             punchcount = 0.5f;
+            var ishit = Physics2D.OverlapBox(transform.position+ new Vector3(push.offset.x,push.offset.y), push.size, 0);
+            if(ishit != null && ishit.attachedRigidbody != null&& ishit.gameObject != gameObject && ishit.isTrigger == false)
+            {
+                ishit.attachedRigidbody.AddForce(transform.right * GetComponent<AreaEffector2D>().forceMagnitude, ForceMode2D.Impulse);
+            }
             if (holding != null)
             {
                 GetComponent<FixedJoint2D>().enabled = false;
@@ -221,14 +226,14 @@ public class move : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         IsLand = true;
-        if (collision.gameObject.tag == "enemy" || collision.gameObject.tag == "boss")
+        if (collision.gameObject.tag == "enemy" || collision.gameObject.tag == "dbnpu")
         {
             hp -= collision.gameObject.GetComponent<hurt>().harm;
         }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.Space) == true && ducking == false && collision.gameObject.tag != "dirt" && holding == null && collision.transform.position.y > transform.position.y - GetComponent<BoxCollider2D>().size.y/2&&collision.gameObject.tag != "boss")
+        if (Input.GetKeyDown(KeyCode.Space) == true && ducking == false && collision.gameObject.tag != "dirt" && holding == null && collision.transform.position.y > transform.position.y - GetComponent<BoxCollider2D>().size.y/2&&collision.gameObject.tag != "dbnpu")
         {
             collision.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1);
             var fix = GetComponent<FixedJoint2D>();

@@ -191,3 +191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
+  death: {fileID: 1800499537036565528, guid: f3be97460e278ab428e6eae366e2e648, type: 3}
+  capsule: 0
+  colorAs: 0

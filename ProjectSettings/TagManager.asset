@@ -10,7 +10,8 @@ TagManager:
   - ladder
   - equippable
   - currency
-  - boss
+  - dbnpu
+  - acessory
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,8 @@ TagManager:
   - ladder
   - qitem
   - safety
-  - dark
-  - lite
+  - web
+  - arach
   - dead
   - swarm
   - 

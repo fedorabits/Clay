@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class market : MonoBehaviour
 {
     public GameObject currency;
+    public GameObject sa;
     public List<GameObject> wares;
     public List<float> cost;
     private GameObject pay;
@@ -15,6 +16,7 @@ public class market : MonoBehaviour
     public string b;
     [TextArea]
     public string header;
+    private string title;
     public Text textTo;
     public GameObject parch;
     // Start is called before the first frame update
@@ -22,9 +24,11 @@ public class market : MonoBehaviour
     {
         pay = PrefabUtility.GetNearestPrefabInstanceRoot(currency);
         int wn = 0;
+        title = header;
         foreach (GameObject wr in wares)
         {
-            header += string.Join("-",(wn+1).ToString() ,wr.name,cost[wn].ToString()+" "+currency.name + "s", "\n");
+            var cst = cost[wn].ToString();
+            header +=(wn+1).ToString()+"-"+wr.name+" "+cst+" "+currency.name + "s"+"\n";
             wn += 1;
         }
     }
@@ -87,7 +91,15 @@ public class market : MonoBehaviour
                 {
                     if (uc >= cost[np])
                     {
-                        Instantiate(wares[np], transform.position, Quaternion.identity);
+                        if (wares[np].activeInHierarchy == true)
+                        {
+                            wares[np].transform.position = transform.position;
+                        }
+                        else
+                        {
+                            Instantiate(wares[np], transform.position, Quaternion.identity);
+                        }
+                        wares[np] = sa;
                         var r = new List<int>();
                         foreach(GameObject c in collide.GetComponent<move>().moneybag)
                         {
@@ -103,6 +115,15 @@ public class market : MonoBehaviour
                         foreach(int ra in r)
                         {
                             collide.GetComponent<move>().moneybag.RemoveAt(ra);
+                        }
+                        cost[np] = 0;
+                        int wn = 0;
+                        header = title;
+                        foreach (GameObject wr in wares)
+                        {
+                            var cst = cost[wn].ToString();
+                            header += (wn + 1).ToString() + "-" + wr.name + " " + cst + " " + currency.name + "s" + "\n";
+                            wn += 1;
                         }
                     }
                 }
